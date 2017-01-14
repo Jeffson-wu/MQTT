@@ -1,0 +1,30 @@
+#Day 1
+
+Mainly focus on the Linkit Smart 7688 Starter Guide and analysis the requirement.
+
+resources:
+https://docs.labs.mediatek.com/resource/linkit-smart-7688/en
+
+#Day2
+
+1:Get familiar with CloudMQTT
+resources:
+https://www.cloudmqtt.com/
+==============================================================================
+
+2:Because the linkit smart 7688 is bricked.I tested the MQTT publishing and subscribe example on a ubutnu machine.Tomorrow I can get the usb cable to flash the 7688 kernel image ,then we can continue the work on 7688 board.
+
+the pre-requirement to run the code on ubuntu:
+#sudo apt-get install python-pip
+#pip install paho-mqtt
+
+to understand the code,please refer to paho API.
+http://www.eclipse.org/paho/clients/python/docs/
+===============================================================================
+
+3:Regarding the board issue,I do not know what happened to it.The wifi-led just lighted up and does not switch off.I googled,said this is a kernel or wifi driver crash issue.Need to flash the board kernel to make it back to work.
+
+refer to this link:
+https://mediatek-labs.gitbooks.io/linkit-smart-7688/content/wi-fi-led-status.html
+
+
