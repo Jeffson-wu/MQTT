@@ -1,0 +1,12 @@
+#Day3
+
+1>I flashed the board with new 7688 firmware 0.9.4 using USB drive,board is ok now.
+
+see the flash tutorial:
+https://docs.labs.mediatek.com/resource/linkit-smart-7688/en/tutorials/firmware-and-bootloader/update-the-firmware-with-a-usb-drive
+==================================================================================================================================
+
+2>tested the MQTT publishing and subscribe example on 7688 board,all worked fine.
+
+To test,we should install paho-mqtt package on 7688 first.
+#pip install paho-mqtt
