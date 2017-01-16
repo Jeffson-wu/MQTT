@@ -6,7 +6,19 @@ see the flash tutorial:
 https://docs.labs.mediatek.com/resource/linkit-smart-7688/en/tutorials/firmware-and-bootloader/update-the-firmware-with-a-usb-drive
 ==================================================================================================================================
 
-2>tested the MQTT publishing and subscribe example on 7688 board,all worked fine.
+
+2>Tested the MQTT publishing and subscribe example on 7688 board,all worked fine.
 
 To test,we should install paho-mqtt package on 7688 first.
 #pip install paho-mqtt
+
+3>Connect the debug console 
+check the 7688 developer guide to understand the pin details,we should connect(RX,TX,GND).
+
+#Day4
+
+1>the 7688 can output audio now,check the latest source(subscribe.py).
+we need to install a few of packages before we can output the audio.
+#opkg install kmod-usb-audio
+#opkg install ffmpeg
+

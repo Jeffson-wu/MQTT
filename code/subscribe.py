@@ -1,5 +1,5 @@
 import paho.mqtt.client as mqtt
-import os, urlparse
+import os, urlparse, urllib
 
 # Define event callbacks
 def on_connect(mosq, obj, rc):
@@ -7,6 +7,15 @@ def on_connect(mosq, obj, rc):
 
 def on_message(mosq, obj, msg):
     print(msg.topic + " " + str(msg.qos) + " " + str(msg.payload))
+
+    #Download the wav file via http
+    audiofile = urllib.URLopener()
+    audiofile.retrieve(str(msg.payload), "audio.wav")
+
+    #In case aplay dose not play some wav files,we should convert it to pcm format.refer to https://ubuntuforums.org/showthread.php?t=1393045
+    os.system("ffmpeg -y -i audio.wav final.wav")
+    #Play the audio using aplay
+    os.system("aplay -D plughw:1,0 final.wav")
 
 #def on_publish(mosq, obj, mid):
 #   print("mid: " + str(mid))
