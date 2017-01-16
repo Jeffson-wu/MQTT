@@ -28,7 +28,7 @@ mqttc.username_pw_set(url.username, url.password)
 mqttc.connect(url.hostname, url.port)
 
 # Publish a message
-mqttc.publish("test", "hello world")
+mqttc.publish("test", "http://www.thewavsite.com/Birthday/bday02.wav")
 
 #disconnect this client
 mqttc.disconnect();
