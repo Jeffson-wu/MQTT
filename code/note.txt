@@ -22,3 +22,12 @@ we need to install a few of packages before we can output the audio.
 #opkg install kmod-usb-audio
 #opkg install ffmpeg
 
+#Day5
+1>run the subscribe.py in start-up
+ /etc/init.d/iot enable
+ /etc/init.d/enabled && echo on
+
+2>run publish.py on another computer within same network
+
+3>curl command to send publishing request
+curl -s http://104.236.243.30/publish.py | python - mqtt://obbzesrv:ZFBjLQuS1h3A@m10.cloudmqtt.com:13198  http://www.thewavsite.com/Birthday/bday02.wav
