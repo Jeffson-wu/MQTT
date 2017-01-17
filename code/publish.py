@@ -12,10 +12,11 @@ def on_log(mosq, obj, level, string):
     print(string)
 
 #Phase the command line argument
-param_1 = sys.argv[1]
-param_2 = sys.argv[2]
+credential = sys.argv[1]
+message = sys.argv[2]
+clientID = sys.argv[3]
 
-mqttc = mqtt.Client()
+mqttc = mqtt.Client(clientID)
 # Assign event callbacks
 mqttc.on_connect = on_connect
 mqttc.on_publish = on_publish
@@ -24,7 +25,7 @@ mqttc.on_publish = on_publish
 #mqttc.on_log = on_log
 
 # Parse CLOUDMQTT_URL (or fallback to localhost)
-url_str = os.environ.get('CLOUDMQTT_URL', param_1)#'mqtt://obbzesrv:ZFBjLQuS1h3A@m10.cloudmqtt.com:13198')
+url_str = os.environ.get('CLOUDMQTT_URL', credential)
 url = urlparse.urlparse(url_str)
 
 # Connect
@@ -32,7 +33,7 @@ mqttc.username_pw_set(url.username, url.password)
 mqttc.connect(url.hostname, url.port)
 
 # Publish a message
-mqttc.publish("test", param_2)#"http://www.thewavsite.com/Birthday/bday02.wav")
+mqttc.publish("test", message)
 
 #disconnect this client
 mqttc.disconnect();
