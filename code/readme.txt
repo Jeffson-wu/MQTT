@@ -25,4 +25,11 @@
 
 #/etc/init.d/iot enable
 
-7>restart the board,the device will automatically subscribed when booting.
+7>make the cronjob to prevent the subscribing process dead
+
+#cp iot/code/7688.sh /usr/sbin
+#chmod +x /usr/sbin/7688.sh
+#crontab -e (add "* * * * * /bin/sh /usr/sbin/7688.sh" to the new file)
+
+
+8>restart the board,the device will automatically subscribed when booting.
