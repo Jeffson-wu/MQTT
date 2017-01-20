@@ -1,5 +1,12 @@
 import paho.mqtt.client as mqtt
 import os, urlparse, urllib
+import fcntl, socket, struct
+
+#Get hardware address 
+def getHwAddr(ifname):
+    s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+    info = fcntl.ioctl(s.fileno(), 0x8927,  struct.pack('256s', ifname[:15]))
+    return ':'.join(['%02x' % ord(char) for char in info[18:24]])
 
 # Define event callbacks
 def on_connect(mosq, obj, rc):
@@ -16,6 +23,8 @@ def on_message(mosq, obj, msg):
     os.system("ffmpeg -y -i audio.wav final.wav")
     #Play the audio using aplay
     os.system("aplay -D plughw:1,0 final.wav")
+    #Delete the audio files
+    os.system("rm -rf /usr/sbin/audio.wav /usr/sbin/final.wav")
 
 #def on_publish(mosq, obj, mid):
 #   print("mid: " + str(mid))
@@ -45,7 +54,9 @@ mqttc.username_pw_set(url.username, url.password)
 mqttc.connect(url.hostname, url.port)
 
 # Start subscribe, with QoS level 0
-mqttc.subscribe("test", 0)
+addr = getHwAddr('eth0')
+topic = addr.replace(b':', b'')
+mqttc.subscribe(topic, 0)
 
 # Publish a message
 #mqttc.publish("test", "my message")
