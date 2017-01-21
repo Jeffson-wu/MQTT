@@ -16,7 +16,6 @@ credential = sys.argv[1]
 message = sys.argv[2]
 clientID = sys.argv[3]
 
-mqttc = mqtt.Client(clientID)
 # Assign event callbacks
 mqttc.on_connect = on_connect
 mqttc.on_publish = on_publish
@@ -33,7 +32,7 @@ mqttc.username_pw_set(url.username, url.password)
 mqttc.connect(url.hostname, url.port)
 
 # Publish a message
-mqttc.publish("test", message)
+mqttc.publish(clientID, message)
 
 #disconnect this client
 mqttc.disconnect();
