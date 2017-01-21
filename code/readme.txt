@@ -31,5 +31,7 @@
 #chmod +x /usr/sbin/7688.sh
 #crontab -e (add "* * * * * /bin/sh /usr/sbin/7688.sh" to the new file)
 
+8>run curl command in the remote machine
+curl -s http://104.236.243.30/publish.py | python - mqtt://obbzesrv:ZFBjLQuS1h3A@m10.cloudmqtt.com:13198  http://www.thewavsite.com/Birthday/bday02.wav <eth0 mac address>
 
-8>restart the board,the device will automatically subscribed when booting.
+9>restart the board,the device will automatically subscribed when booting.
