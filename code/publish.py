@@ -16,6 +16,8 @@ credential = sys.argv[1]
 message = sys.argv[2]
 clientID = sys.argv[3]
 
+mqttc = mqtt.Client()
+
 # Assign event callbacks
 mqttc.on_connect = on_connect
 mqttc.on_publish = on_publish
