@@ -7,6 +7,11 @@
 
 2>Install packages for outputing audio
 
+------AK added
+UPDATE opkg packages
+
+#opkg update
+-----
 #opkg install kmod-usb-audio
 #opkg install ffmpeg
 
