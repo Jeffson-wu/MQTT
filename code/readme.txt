@@ -1,6 +1,5 @@
 7688 setup
-======================================================================
-
+=========================================================================
 1>Install paho-mqtt package
 
 #pip install paho-mqtt
@@ -38,8 +37,9 @@ UPDATE opkg packages
 
 8>Restart the board,the device will automatically subscribed when booting.
 
+
 Create the user
-===================================================================================
+=========================================================================
 1>Broswer http://104.236.243.30/login.html
 
 2>Enter your board credentials to create the user
@@ -49,7 +49,7 @@ note:the user name should be without numbers,the mac address should strip colon;
 
 
 Modify the code to adjust to your board
-================================================================================
+=========================================================================
 1>Open subscribe.py
 
 2>Modify this line
@@ -59,7 +59,7 @@ change "obbzesrv:ZFBjLQuS1h3A" to your own cloudmqtt credential(username:passwor
 
 
 Test the result
-====================================================
+=========================================================================
 1>curl command to send publishing request
 curl -s http://104.236.243.30/publish.py | python - mqtt://obbzesrv:ZFBjLQuS1h3A@m10.cloudmqtt.com:13198  http://www.thewavsite.com/Birthday/bday02.wav <mac address>
 
